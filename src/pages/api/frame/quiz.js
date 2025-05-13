@@ -80,14 +80,22 @@ export default async function handler(req, res) {
     // Get recommendation based on mood and genre
     const recommendation = await getRecommendation(mood, genre);
     
+    // Create a shareable message
+    const shareMessage = `🎵 My Song of the Day: "${recommendation.title}" by ${recommendation.artist}\n\n` +
+      `Mood: ${moods[mood - 1]}\n` +
+      `Genre: ${genres[genre - 1]}\n\n` +
+      `Take the quiz: https://song-of-the-day-sepia.vercel.app/api/frame`;
+    
     const frameMetadata = {
       "og:title": "Your Song Recommendation",
       "og:description": `${recommendation.title} by ${recommendation.artist}`,
       "og:image": recommendation.coverUrl,
       "fc:frame": "vNext",
       "fc:frame:image": recommendation.coverUrl,
-      "fc:frame:button:1": "Take Quiz Again",
-      "fc:frame:post_url": "https://song-of-the-day-sepia.vercel.app/api/frame"
+      "fc:frame:button:1": "Share to Farcaster",
+      "fc:frame:button:2": "Take Quiz Again",
+      "fc:frame:post_url": "https://song-of-the-day-sepia.vercel.app/api/frame/share",
+      "fc:frame:state": `share_${mood}_${genre}`
     };
 
     res.setHeader('Content-Type', 'text/html');
@@ -103,6 +111,8 @@ export default async function handler(req, res) {
         <body>
           <h1>Your Song Recommendation</h1>
           <p>${recommendation.title} by ${recommendation.artist}</p>
+          <p>Mood: ${moods[mood - 1]}</p>
+          <p>Genre: ${genres[genre - 1]}</p>
         </body>
       </html>
     `);
