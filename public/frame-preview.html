@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
             padding: 0;
             width: 1200px;
-            height: 630px;
+            height: 628px; /* Adjusted for 1.91:1 aspect ratio */
             background: #1a1a1a;
             display: flex;
             justify-content: center;
@@ -16,11 +17,17 @@
         .content {
             text-align: center;
             color: white;
+            padding: 40px;
         }
         h1 {
             font-size: 48px;
             margin: 0;
             padding: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            font-size: 24px;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -28,6 +35,7 @@
     <div class="content">
         <h1>Song of the Day</h1>
         <h1>Take the Quiz!</h1>
+        <p class="subtitle">Discover your perfect song based on your personality</p>
     </div>
 </body>
 </html> 
