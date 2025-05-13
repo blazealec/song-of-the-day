@@ -30,9 +30,17 @@ export default async function handler(req, res) {
           ${Object.entries(frameMetadata)
             .map(([key, value]) => `<meta property="${key}" content="${value}" />`)
             .join('\n')}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script src="https://unpkg.com/@farcaster/frame-sdk@latest/dist/index.js"></script>
         </head>
         <body>
-          <h1>What's your current mood?</h1>
+          <div id="app">
+            <h1>What's your current mood?</h1>
+          </div>
+          <script>
+            const { sdk } = window.FarcasterFrameSDK;
+            sdk.actions.ready();
+          </script>
         </body>
       </html>
     `);
@@ -64,9 +72,17 @@ export default async function handler(req, res) {
           ${Object.entries(frameMetadata)
             .map(([key, value]) => `<meta property="${key}" content="${value}" />`)
             .join('\n')}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script src="https://unpkg.com/@farcaster/frame-sdk@latest/dist/index.js"></script>
         </head>
         <body>
-          <h1>What genre do you prefer?</h1>
+          <div id="app">
+            <h1>What genre do you prefer?</h1>
+          </div>
+          <script>
+            const { sdk } = window.FarcasterFrameSDK;
+            sdk.actions.ready();
+          </script>
         </body>
       </html>
     `);
@@ -79,12 +95,6 @@ export default async function handler(req, res) {
     
     // Get recommendation based on mood and genre
     const recommendation = await getRecommendation(mood, genre);
-    
-    // Create a shareable message
-    const shareMessage = `🎵 My Song of the Day: "${recommendation.title}" by ${recommendation.artist}\n\n` +
-      `Mood: ${moods[mood - 1]}\n` +
-      `Genre: ${genres[genre - 1]}\n\n` +
-      `Take the quiz: https://song-of-the-day-sepia.vercel.app/api/frame`;
     
     const frameMetadata = {
       "og:title": "Your Song Recommendation",
@@ -107,12 +117,20 @@ export default async function handler(req, res) {
           ${Object.entries(frameMetadata)
             .map(([key, value]) => `<meta property="${key}" content="${value}" />`)
             .join('\n')}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script src="https://unpkg.com/@farcaster/frame-sdk@latest/dist/index.js"></script>
         </head>
         <body>
-          <h1>Your Song Recommendation</h1>
-          <p>${recommendation.title} by ${recommendation.artist}</p>
-          <p>Mood: ${moods[mood - 1]}</p>
-          <p>Genre: ${genres[genre - 1]}</p>
+          <div id="app">
+            <h1>Your Song Recommendation</h1>
+            <p>${recommendation.title} by ${recommendation.artist}</p>
+            <p>Mood: ${moods[mood - 1]}</p>
+            <p>Genre: ${genres[genre - 1]}</p>
+          </div>
+          <script>
+            const { sdk } = window.FarcasterFrameSDK;
+            sdk.actions.ready();
+          </script>
         </body>
       </html>
     `);
