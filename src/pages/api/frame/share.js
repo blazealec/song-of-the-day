@@ -28,7 +28,8 @@ export default async function handler(req, res) {
       "fc:frame:image": recommendation.coverUrl,
       "fc:frame:input:text": shareMessage,
       "fc:frame:button:1": "Post to Farcaster",
-      "fc:frame:post_url": "https://song-of-the-day-sepia.vercel.app/api/frame/post"
+      "fc:frame:post_url": "https://song-of-the-day-sepia.vercel.app/api/frame/post",
+      "fc:frame:aspect_ratio": "1.91:1"
     };
 
     res.setHeader('Content-Type', 'text/html');
@@ -40,6 +41,7 @@ export default async function handler(req, res) {
           ${Object.entries(frameMetadata)
             .map(([key, value]) => `<meta property="${key}" content="${value}" />`)
             .join('\n')}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body>
           <h1>Share Your Song</h1>
