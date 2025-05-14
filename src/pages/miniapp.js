@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import App from '../App';
 
 const MiniApp = () => {
   useEffect(() => {
@@ -11,7 +10,7 @@ const MiniApp = () => {
     });
   }, []);
 
-  return <App />;
+  return <div style={{ color: 'white', background: 'black', padding: 40, fontSize: 24 }}>Hello from Mini App!</div>;
 };
 
 export default MiniApp; 
