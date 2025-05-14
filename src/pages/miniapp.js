@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { sdk } from '@farcaster/frame-sdk';
 import App from '../App';
 
-export default function MiniApp() {
+const MiniApp = () => {
   useEffect(() => {
-    if (sdk && sdk.actions && sdk.actions.ready) {
-      sdk.actions.ready();
-    }
+    // Only run on client
+    import('@farcaster/frame-sdk').then(({ sdk }) => {
+      if (sdk && sdk.actions && sdk.actions.ready) {
+        sdk.actions.ready();
+      }
+    });
   }, []);
 
   return <App />;
-} 
+};
+
+export default MiniApp; 
