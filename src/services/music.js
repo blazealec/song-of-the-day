@@ -110,195 +110,111 @@ const MAX_RECENT_RECOMMENDATIONS = 50;
 
 // Common artists and songs for each genre
 const genreArtists = {
-  electronic: [
-    { 
-      name: "Deadmau5", 
-      songs: [
-        { title: "Strobe", cover: "https://i.imgur.com/JQK5tXZ.jpg" },
-        { title: "Ghosts 'n' Stuff", cover: "https://i.imgur.com/JQK5tXZ.jpg" },
-        { title: "Raise Your Weapon", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "I Remember", cover: "https://i.imgur.com/JQK5tXZ.jpg" },
-        { title: "The Veldt", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
-      name: "Daft Punk", 
-      songs: [
-        { title: "One More Time", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Get Lucky", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Harder Better Faster Stronger", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Around the World", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Digital Love", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
-      name: "The Chemical Brothers", 
-      songs: [
-        { title: "Galvanize", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Hey Boy Hey Girl", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Go", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Block Rockin' Beats", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Star Guitar", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    }
-  ],
-  hiphop: [
-    { 
-      name: "Kanye West", 
-      songs: [
-        { title: "Stronger", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "All of the Lights", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Runaway", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Gold Digger", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Heartless", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
-      name: "Kendrick Lamar", 
-      songs: [
-        { title: "HUMBLE.", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Alright", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Swimming Pools", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "King Kunta", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "DNA.", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
-      name: "J. Cole", 
-      songs: [
-        { title: "No Role Modelz", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Middle Child", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Love Yourz", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Work Out", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Power Trip", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    }
-  ],
-  rock: [
-    { 
-      name: "Queen", 
-      songs: [
-        { title: "Bohemian Rhapsody", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Another One Bites the Dust", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "We Will Rock You", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Don't Stop Me Now", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Somebody to Love", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
-      name: "Led Zeppelin", 
-      songs: [
-        { title: "Stairway to Heaven", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Whole Lotta Love", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Kashmir", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Black Dog", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Immigrant Song", cover: "https://i.imgur.com/QZxGXxY.jpg" }
-      ]
-    },
-    { 
-      name: "The Beatles", 
-      songs: [
-        { title: "Hey Jude", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Let It Be", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Come Together", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Yesterday", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Here Comes the Sun", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    }
-  ],
-  jazz: [
-    { 
-      name: "Miles Davis", 
-      songs: [
-        { title: "So What", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Blue in Green", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "All Blues", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Flamenco Sketches", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Nardis", cover: "https://i.imgur.com/QZxGXxY.jpg" }
-      ]
-    },
-    { 
-      name: "John Coltrane", 
-      songs: [
-        { title: "Giant Steps", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "My Favorite Things", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "A Love Supreme", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Naima", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Blue Train", cover: "https://i.imgur.com/QZxGXxY.jpg" }
-      ]
-    },
-    { 
-      name: "Thelonious Monk", 
-      songs: [
-        { title: "Round Midnight", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Blue Monk", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Straight No Chaser", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Ruby My Dear", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Well You Needn't", cover: "https://i.imgur.com/QZxGXxY.jpg" }
-      ]
-    }
-  ],
   pop: [
     { 
-      name: "Taylor Swift", 
+      name: "Dua Lipa", 
       songs: [
-        { title: "Shake It Off", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Blank Space", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Style", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Love Story", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "You Belong With Me", cover: "https://i.imgur.com/QZxGXxY.jpg" }
+        { title: "Levitating", cover: "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e" },
+        { title: "Don't Start Now", cover: "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e" },
+        { title: "Physical", cover: "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e" }
       ]
     },
     { 
       name: "The Weeknd", 
       songs: [
-        { title: "Blinding Lights", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Starboy", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "The Hills", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Save Your Tears", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Die For You", cover: "https://i.imgur.com/8XZxYQp.jpg" }
+        { title: "Blinding Lights", cover: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36" },
+        { title: "Save Your Tears", cover: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36" },
+        { title: "Starboy", cover: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36" }
+      ]
+    }
+  ],
+  rock: [
+    { 
+      name: "Arctic Monkeys", 
+      songs: [
+        { title: "Do I Wanna Know?", cover: "https://i.scdn.co/image/ab67616d0000b2732e8ed79e177ff6011076f5f5" },
+        { title: "R U Mine?", cover: "https://i.scdn.co/image/ab67616d0000b2732e8ed79e177ff6011076f5f5" },
+        { title: "Why'd You Only Call Me When You're High?", cover: "https://i.scdn.co/image/ab67616d0000b2732e8ed79e177ff6011076f5f5" }
       ]
     },
     { 
-      name: "Dua Lipa", 
+      name: "Queens of the Stone Age", 
       songs: [
-        { title: "Levitating", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Don't Start Now", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "New Rules", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Physical", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Break My Heart", cover: "https://i.imgur.com/8XZxYQp.jpg" }
+        { title: "No One Knows", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Go With the Flow", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "The Way You Used to Do", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
+      ]
+    }
+  ],
+  hiphop: [
+    { 
+      name: "Kendrick Lamar", 
+      songs: [
+        { title: "HUMBLE.", cover: "https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a" },
+        { title: "DNA.", cover: "https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a" },
+        { title: "Alright", cover: "https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a" }
+      ]
+    },
+    { 
+      name: "J. Cole", 
+      songs: [
+        { title: "No Role Modelz", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Middle Child", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Love Yourz", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
+      ]
+    }
+  ],
+  electronic: [
+    { 
+      name: "Deadmau5", 
+      songs: [
+        { title: "Strobe", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Ghosts 'n' Stuff", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Raise Your Weapon", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
+      ]
+    },
+    { 
+      name: "Daft Punk", 
+      songs: [
+        { title: "One More Time", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Get Lucky", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Harder Better Faster Stronger", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
       ]
     }
   ],
   indie: [
     { 
-      name: "Arctic Monkeys", 
-      songs: [
-        { title: "Do I Wanna Know?", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "505", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "R U Mine?", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Why'd You Only Call Me When You're High?", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Arabella", cover: "https://i.imgur.com/8XZxYQp.jpg" }
-      ]
-    },
-    { 
       name: "Tame Impala", 
       songs: [
-        { title: "The Less I Know The Better", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Feels Like We Only Go Backwards", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "Let It Happen", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Borderline", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Eventually", cover: "https://i.imgur.com/8XZxYQp.jpg" }
+        { title: "The Less I Know The Better", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Feels Like We Only Go Backwards", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Let It Happen", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
       ]
     },
     { 
-      name: "Vampire Weekend", 
+      name: "Arctic Monkeys", 
       songs: [
-        { title: "A-Punk", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Oxford Comma", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Cape Cod Kwassa Kwassa", cover: "https://i.imgur.com/8XZxYQp.jpg" },
-        { title: "Harmony Hall", cover: "https://i.imgur.com/QZxGXxY.jpg" },
-        { title: "This Life", cover: "https://i.imgur.com/QZxGXxY.jpg" }
+        { title: "Do I Wanna Know?", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "R U Mine?", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Why'd You Only Call Me When You're High?", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
+      ]
+    }
+  ],
+  jazz: [
+    { 
+      name: "Kamasi Washington", 
+      songs: [
+        { title: "The Rhythm Changes", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Truth", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Fists of Fury", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
+      ]
+    },
+    { 
+      name: "Robert Glasper", 
+      songs: [
+        { title: "Ah Yeah", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Gonna Be Alright", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" },
+        { title: "Black Radio", cover: "https://i.scdn.co/image/ab67616d0000b273c6f7af36bcd24e9c5c4c0b1a" }
       ]
     }
   ]
