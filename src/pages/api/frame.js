@@ -25,10 +25,7 @@ export default function handler(req, res) {
           .join('\n')}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
       </head>
-      <body>
-        <h1>Song of the Day - Personality Quiz</h1>
-        <p>Take a quick personality quiz to discover your perfect song!</p>
-      </body>
+      <body></body>
     </html>
   `);
 } 
