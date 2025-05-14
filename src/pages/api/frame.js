@@ -3,9 +3,9 @@ export default function handler(req, res) {
   const frameMetadata = {
     "og:title": "Song of the Day - Personality Quiz",
     "og:description": "Take a quick personality quiz to discover your perfect song!",
-    "og:image": "https://song-of-the-day-sepia.vercel.app/frame-preview.svg",
+    "og:image": "https://og-image.vercel.app/Song%20of%20the%20Day.png?theme=dark",
     "fc:frame": "vNext",
-    "fc:frame:image": "https://song-of-the-day-sepia.vercel.app/frame-preview.svg",
+    "fc:frame:image": "https://og-image.vercel.app/Song%20of%20the%20Day.png?theme=dark",
     "fc:frame:button:1": "Start Quiz",
     "fc:frame:post_url": "https://song-of-the-day-sepia.vercel.app/api/frame/quiz",
     "fc:frame:aspect_ratio": "1.91:1"
